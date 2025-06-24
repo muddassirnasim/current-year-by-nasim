@@ -3,7 +3,7 @@ name: Deploy to WordPress.org
 on:
   push:
     tags:
-      - "*"
+      - '*'
 
 jobs:
   deploy:
@@ -12,9 +12,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Deploy to WordPress SVN
+      - name: Deploy Plugin to WordPress.org
         uses: 10up/action-wordpress-plugin-deploy@stable
-        with:
-          plugin_slug: current-year-by-nasim
-          svn_username: ${{ secrets.SVN_USERNAME }}
-          svn_password: ${{ secrets.SVN_PASSWORD }}
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
