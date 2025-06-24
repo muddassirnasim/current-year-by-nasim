@@ -1,0 +1,22 @@
+name: Deploy to WordPress.org
+
+on:
+  push:
+    tags:
+      - "*"  # Triggers on any tag, like 1.0.1
+
+jobs:
+  deploy:
+    name: Deploy Plugin
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: WordPress Plugin Deploy
+      uses: 10up/action-wordpress-plugin-deploy@v2
+      with:
+        plugin_slug: current-year-by-nasim
+        svn_username: ${{ secrets.SVN_USERNAME }}
+        svn_password: ${{ secrets.SVN_PASSWORD }}
