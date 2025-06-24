@@ -3,18 +3,17 @@ name: Deploy to WordPress.org
 on:
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Deploy to WordPress SVN
-        uses: 10up/action-wordpress-plugin-deploy@trunk
+        uses: 10up/action-wordpress-plugin-deploy@v1.4.0
         with:
           plugin_slug: current-year-by-nasim
           svn_username: ${{ secrets.SVN_USERNAME }}
